@@ -9,6 +9,9 @@ main.go为求接口值的代码，文件夹中包含.yaml配置文件，，docke
 
 步骤1.跟随shifu官方文档部署Docker Desktop，这里我使用macos系统部署。
 <img width="491" alt="image" src="https://github.com/efanwcy/shifu-averageprint/assets/101723328/444ed130-914e-43b1-86cb-73f6ccd96d61">
+
+
+
 步骤2：配置shifu所需依赖项
 golang 官方文档部署 https://go.dev/dl/
 Docker，按照Docker Desktop部署。
@@ -24,9 +27,12 @@ kubebuilder的部署：https://github.com/kubernetes-sigs/kubebuilder
 
 cd命令进入shifudemos，使用sudo kubectl run --image=nginx:1.21 nginx命令启动nginx,使用sudo kubectl get pods -A | grep nginx命令去查看nginx ![d41ed4aede70cede8f3e78aae374107](https://github.com/efanwcy/shifu-averageprint/assets/101723328/6dd46bd9-d1c4-4fb9-9a07-69c9dd0bdfff)
 
+
 步骤3 与酶标仪交互，使用sudo kubectl apply -f run_dir/shifu/demo_device/edgedevice-plate-reader命令启动酶标仪，并通过sudo kubectl get pods -A|grep plate去查看 ![82fd9024d67f6463c08569c196c27e2](https://github.com/efanwcy/shifu-averageprint/assets/101723328/1413d71a-4c4b-4054-b888-864205d986bd)
  
 sudo kubectl exec -it nginx -- bash进入nginx,输入curl "deviceshifu-plate-reader.deviceshifu.svc.cluster.local/get_measurement"命令可以得到 ![8d61049da9d46502b02b20bbe455165](https://github.com/efanwcy/shifu-averageprint/assets/101723328/e2cddbb3-1a54-4f3d-92f3-9ceb4424ed0f)
+
+
 
 步骤4 将main.go文件配置docker file，并使用docker build -t averageprint .构建Docker镜像。
 docker login在本地登录Docker Hub，docker tag averageprint golangtrainee/average标记镜像，并使用docker push golangtrainee/averageprint推送到Dockerhub <img width="688" alt="1053d5f4be444b42f47040a3c9614b3" src="https://github.com/efanwcy/shifu-averageprint/assets/101723328/a31a3102-5228-4c6e-9b22-d1b508bb1474">
