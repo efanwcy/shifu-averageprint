@@ -5,6 +5,8 @@
 ![8d61049da9d46502b02b20bbe455165](https://github.com/efanwcy/shifu-averageprint/assets/101723328/45b7807b-fd47-4f33-aa00-a16f5e5b640d)# shifu-averageprint
 基于shifu项目下，定期获取酶标仪的get_measurement接口，每五分钟打印一次平均值。
 main.go为求接口值的代码，文件夹中包含.yaml配置文件，，docker文件与dockerfile
+
+
 步骤1.跟随shifu官方文档部署Docker Desktop，这里我使用macos系统部署。
 <img width="491" alt="image" src="https://github.com/efanwcy/shifu-averageprint/assets/101723328/444ed130-914e-43b1-86cb-73f6ccd96d61">
 步骤2：配置shifu所需依赖项
